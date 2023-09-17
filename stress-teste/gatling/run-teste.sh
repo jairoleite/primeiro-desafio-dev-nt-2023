@@ -7,15 +7,17 @@
 # altere o caminho para sua máquina
 GATLING_BIN_DIR=$HOME/Documents/tools/gatling/bin
 
-# altere o caminho para sua máquina
-WORKSPACE=$HOME/Documents/desafios/primeiro-desafio-dev-nt-2023/stress-teste
+echo "${GATLING_BIN_DIR}"
 
-sh $GATLING_BIN_DIR/gatling.sh -rm local -s GatlingSimulation \
+WORKSPACE=$(pwd)
+
+sh $GATLING_BIN_DIR/gatling.sh -rm local -s DesafioDevNtSimulacao \
     -rd "DESCRICAO" \
-    -rf $WORKSPACE/arquivo-usuario/results \
-    -sf $WORKSPACE/arquivo-usuario/simulations \
-    -rsf $WORKSPACE/arquivo-usuario/resources \
+    -rf ${WORKSPACE}/arquivo-usuario/resultado \
+    -sf ${WORKSPACE}/arquivo-usuario/simulacao \
+    -rsf ${WORKSPACE}/arquivo-usuario/dados \
 
 sleep 3
 
-curl -v "http://localhost:9999/contagem-pessoas"
+COUNT=$(curl -fsSL "http://localhost:9999/contagem-pessoas")
+echo "Quantidade de pessoas cadastradas ==> ${COUNT}"

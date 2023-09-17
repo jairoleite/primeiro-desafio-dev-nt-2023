@@ -12,7 +12,7 @@ echo "${GATLING_BIN_DIR}"
 WORKSPACE=$(pwd)
 
 sh $GATLING_BIN_DIR/gatling.sh -rm local -s DesafioDevNtSimulacao \
-    -rd "DESCRICAO" \
+    -rd "Desafio dev's NT" \
     -rf ${WORKSPACE}/arquivo-usuario/resultado \
     -sf ${WORKSPACE}/arquivo-usuario/simulacao \
     -rsf ${WORKSPACE}/arquivo-usuario/dados \
